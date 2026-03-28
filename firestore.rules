@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    // Collection: audits
+    // Document ID: auto-generated
+    // Fields:
+    //   - userId: string (optional now)
+    // ===============================================================
+    
+    match /audits/{auditId} {
+      // Allow ANYONE to read and write. 
+      // This bypasses the need for Anonymous Authentication completely.
+      allow read, write: if true;
+    }
+  }
+}

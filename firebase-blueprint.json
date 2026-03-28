@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "AuditRecord": {
+      "title": "Audit Record",
+      "description": "A record of a Generative Engine Audit.",
+      "type": "object",
+      "properties": {
+        "brandName": { "type": "string" },
+        "competitors": { "type": "array", "items": { "type": "string" } },
+        "strategicIntent": { "type": "string" },
+        "visibilityDeficitScore": { "type": "number" },
+        "priorityScore": { "type": "number" },
+        "referenceParity": { "type": "string" },
+        "authorityErasure": { "type": "number" },
+        "statusText": { "type": "string" },
+        "actionableBottlenecks": { "type": "array", "items": { "type": "string" } },
+        "competitorMO": { "type": "string" },
+        "theFix": { "type": "array", "items": { "type": "string" } },
+        "platformGapAnalysis": { "type": "array", "items": { "type": "string" } },
+        "sourceAttribution": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "competitor": { "type": "string" },
+              "url": { "type": "string" },
+              "snippet": { "type": "string" }
+            }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "userId": { "type": "string" }
+      },
+      "required": ["brandName", "competitors", "strategicIntent", "visibilityDeficitScore", "createdAt", "userId"]
+    }
+  },
+  "firestore": {
+    "/audits/{auditId}": {
+      "schema": { "$ref": "#/entities/AuditRecord" },
+      "description": "Stores all generated audits."
+    }
+  }
+}
